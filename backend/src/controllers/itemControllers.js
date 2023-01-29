@@ -1,10 +1,9 @@
-const models = require("../models");
+const modelItem = require("../models/AbstractManager");
 
 const browse = (req, res) => {
-  models.item
-    .findAll()
-    .then(([rows]) => {
-      res.send(rows);
+  modelItem.findAll()
+    .then(([result]) => {
+      res.status(200).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -12,9 +11,9 @@ const browse = (req, res) => {
     });
 };
 
+
 const read = (req, res) => {
-  models.item
-    .find(req.params.id)
+  modelItem.find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
