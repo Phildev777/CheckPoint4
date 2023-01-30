@@ -1,4 +1,6 @@
 const modelItem = require("../models/AbstractManager");
+//const jwt = require("jsonwebtoken");
+//require("dotenv").config();
 
 const browse = async (req, res) => {
  
@@ -133,6 +135,31 @@ const destroy =async (req, res) => {
 
 }
 }
+
+/* const login = async (req, res) => {
+  try {
+    const { nom, motdepasse } = req.body;
+    const result = await utilisateurModel.login(nom, motdepasse);
+    const token = jwt.sign({ user: result }, process.env.TOKEN_SECRET, {
+      expiresIn: "24h",
+    });
+    console.warn(result);
+    result.token = token;
+
+    delete result.motdepasse;
+    res.status(200).send(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+};
+const getUserToken = (req, res) => {
+  const { user } = jwt.verify(
+    req.headers.authorization,
+    process.env.TOKEN_SECRET
+  );
+  res.status(200).send(user);
+}; */
   
 
 module.exports = {
@@ -141,4 +168,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  //login,
 };
