@@ -1,4 +1,4 @@
-const modelItem = require("../models/AbstractManager");
+const ConsolesModel = require("../models/ConsoleModel");
 //const jwt = require("jsonwebtoken");
 //require("dotenv").config();
 
@@ -6,7 +6,7 @@ const browse = async (req, res) => {
  
  try{
 
-  const [result] = await modelItem.findAll()
+  const [result] = await ConsolesModel.findAll()
 
 return res.status(200).send(result);
 
@@ -26,7 +26,7 @@ catch(err){
 const read= async (req, res)=> {
 
   try {
-    const [result] = await modelItem.find(req.params.id)//params fait référence aux : dans les routes
+    const [result] = await ConsolesModel.find(req.params.idConsoles)//params fait référence aux : dans les routes
 
 
     return res.status(200).send(result);
@@ -72,8 +72,8 @@ const edit = async (req, res) => {
 
   try {
 
-      const { name } = req.body;
-      const [ result ] = await modelItem.editor(name);
+      const { denomination, Makers_IdMakers, Years_idYears } = req.body;
+      const [ result ] = await ConsolesModel.editor(denomination, Makers_IdMakers, Years_idYears);
       if (result.affectedRows > 0) {
           return res.status(201).send(result);
 
@@ -93,12 +93,12 @@ const edit = async (req, res) => {
 
 const add = async (req, res) => {
   const {
-    name,
+    denomination,
    
   } = req.body;
 
-  const result = await modelItem.create(
-    name,
+  const result = await ConsolesModel.create(
+    denomination,
   
   );
 
@@ -121,10 +121,10 @@ const destroy =async (req, res) => {
   try {
 
 
-    const [ result ] = await modelItem.del(req.params.id)
+    const [ result ] = await ConsolesModel.del(req.params.idConsoles)
 
     if (result.affectedRows > 0) {
-        return res.status(400).send("utilisateur supprimé");
+        return res.status(400).send("Console supprimée");
 
     }
 

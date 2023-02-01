@@ -6,19 +6,19 @@ const connection = require('../config/db');
 
 
 
- const find =(id) => {
-    return connection.query("select * from  kingdom where id = ?", [
-      id,
+ const find =(idGames) => {
+    return connection.query("select * from games  where idGames = ?", [
+      idGames,
     ]);
   }
 
   const findAll =()=> {
-    return connection.query("select * from  kingdom");
+    return connection.query("select * from  games");
   }
 
-   const del =(id)=> {
-    return connection.query("delete from kingdom where id = ?", [
-      id,
+   const del =(idGames)=> {
+    return connection.query("delete from games where idGames = ?", [
+      idGames,
     ]);
   } 
 
@@ -35,7 +35,7 @@ const connection = require('../config/db');
         process.env.SALT
       ); */
       const [result] = await connection.query(
-        "INSERT INTO kingdom ( name) VALUES (?)",
+        "INSERT INTO games ( Name) VALUES (?)",
         [
           name,
          
@@ -52,10 +52,10 @@ const connection = require('../config/db');
     }
   };
 
-  const editor = (id,name) => {
-    return connection.query("UPDATE kingdom SET name=? WHERE id=?", [
+  const editor = (idGames,name) => {
+    return connection.query("UPDATE games SET Name=? WHERE idGames=?", [
       name,
-      id
+      idGames
     ]);
   };
 
