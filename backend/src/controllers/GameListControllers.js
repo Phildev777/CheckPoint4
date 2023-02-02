@@ -1,4 +1,4 @@
-const MListeModel = require("../models/MaListeModel");
+const GamesListModel = require("../models/GameListModel");
 //const jwt = require("jsonwebtoken");
 //require("dotenv").config();
 
@@ -6,7 +6,7 @@ const browse = async (req, res) => {
  
  try{
 
-  const [result] = await MListeModel.findAll()
+  const [result] = await GamesListModel.findAll()
 
 return res.status(200).send(result);
 
@@ -26,7 +26,7 @@ catch(err){
 const read= async (req, res)=> {
 
   try {
-    const [result] = await MListeModel.find(req.params.idMaListe)//params fait référence aux : dans les routes
+    const [result] = await GamesListModel.find(req.params.idConsoles)//params fait référence aux : dans les routes
 
 
     return res.status(200).send(result);
@@ -69,12 +69,12 @@ const read= async (req, res)=> {
 
 
 const edit = async (req, res) => {
-console.log(req.body);
 
   try {
 
-      const {NmListe,idMaListe } = req.body;
-      const [ result ] = await MListeModel.editor(NmListe,idMaListe);
+      const { Games_idGames, MaListe_idMaListe,idMaListe } = req.body;
+      const [ result ] = await GamesListModel.editor(Games_idGames, MaListe_idMaListe,idMaListe)
+;
 
       if (result.affectedRows > 0) {
           return res.status(201).send(result);
@@ -95,22 +95,21 @@ console.log(req.body);
 
 const add = async (req, res) => {
   const {
-   
-   NmListe,
+    Games_idGames,
+   MaListe_idMaListe,
   } = req.body;
 
-  const result = await MListeModel.create(
-        NmListe,
+  const result = await GamesListModel.create(
+    Games_idGames,
+    MaListe_idMaListe,
   
   );
 
   if (result === "Created") {
-    return res.status(201).send("Liste crée");
-
+    return res.status(201).send("liste remplie");
   }
   if (result === "Not created") {
-    return res.status(200).send("Liste déjà existante");
-
+    return res.status(200).send("liste déjà utilisée");
   }
 
   return res.status(500).send("Something broke");
@@ -125,7 +124,7 @@ const destroy =async (req, res) => {
   try {
 
 
-    const [ result ] = await MListeModel.del(req.params.idMaListe);
+    const [ result ] = await GamesListModel.del(req.params.idConsoles)
 
     if (result.affectedRows > 0) {
         return res.status(400).send("Liste supprimée");

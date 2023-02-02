@@ -1,8 +1,7 @@
 
 const connection = require('../config/db');
 
-//const bcrypt = require("bcrypt");
-//require("dotenv").config();
+
 
 
 
@@ -27,18 +26,22 @@ const connection = require('../config/db');
 
   const create = async (
     denomination,
+    imgC,
+    Makers_idMakers,  
+    Years_idYears,
+    
     
 
   ) => {
     try {
-     /*  const hashedMotdepasse = await bcrypt.hashSync(
-        motdepasse,
-        process.env.SALT
-      ); */
+   
       const [result] = await connection.query(
-        "INSERT INTO consoles ( denomination) VALUES (?)",
+        "INSERT INTO consoles ( denomination, imgC, Makers_idMakers, Years_idYears) VALUES (?,?,?,?)",
         [
           denomination,
+          imgC,
+          Makers_idMakers,
+          Years_idYears,
          
         ]
       );
@@ -53,34 +56,17 @@ const connection = require('../config/db');
     }
   };
 
-  const editor = (idConsoles,denomination) => {
-    return connection.query("UPDATE consoles SET denomination=? WHERE idConsoles=?", [
+  const editor = (denomination,imgC, Makers_idMakers, Years_idYears,idConsoles) => {
+    return connection.query("UPDATE consoles SET denomination=?, imgC=?,Makers_idMakers=?,Years_idYears=? WHERE idConsoles=?", [
       denomination,
-      idConsoles
+      imgC,
+      Makers_idMakers,
+      Years_idYears,
+      idConsoles,
     ]);
   };
 
 
-/*   const login = async (nom, motdepasse) => {
-    try {
-      const hashedMotdepasse = await bcrypt.hashSync(
-        motdepasse,
-        process.env.SALT
-      );
-      const [result] = await connection.query(
-        "SELECT * FROM table WHERE nom=? AND motdepasse=?",
-        [nom, hashedMotdepasse]
-      );
-  
-      if (result.length > 0) {
-        return result[0];
-      }
-      return "Utilisateur non trouvé";
-    } catch (e) {
-      console.error(e);
-      return e;
-    }
-  }; */
 
 
 
@@ -90,6 +76,6 @@ findAll,
 del,
 create,
 editor,
-//login,
+
 
 };

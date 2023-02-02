@@ -1,0 +1,3 @@
+En tant qu'utilisateur je peux bouger les icônes sur la page d'accueil
+En tant qu'utilisateur je ajouter une console
+en tant qu'utilisateur je peux glisser mes jeux dans un tableau depuis une liste 

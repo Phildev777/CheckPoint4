@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.TitreH{
+    
+font-family: 'VT323', monospace;
+
+background-image: url("../familNin.jpg");
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+font-size: 130px;
+
+font-weight: bold;
+text-align: center;
+
+}
+.Nav{
+
+text-decoration: none;
+
+}
+.Hom{
+background-color: black;
+width:100%;
+height:100%;
+
+
+}

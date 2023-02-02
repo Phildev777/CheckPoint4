@@ -52,10 +52,14 @@ const connection = require('../config/db');
     }
   };
 
-  const editor = (idGames,name) => {
-    return connection.query("UPDATE games SET Name=? WHERE idGames=?", [
-      name,
-      idGames
+  const editor = (Name,imgG, Consoles_idConsoles,Years_idYears,idGames) => {
+    return connection.query("UPDATE games SET Name=?,imgG=?, Consoles_idConsoles=?,Years_idYears=? WHERE idGames=?", [
+      Name,
+       imgG,
+      Consoles_idConsoles, 
+     
+      Years_idYears, 
+       idGames,
     ]);
   };
 

@@ -6,19 +6,19 @@ const connection = require('../config/db');
 
 
 
- const find =(idMaListe) => {
-    return connection.query("select * from MaListe  where idMaListe = ?", [
-      idMaListe,
+ const find =(idGames) => {
+    return connection.query("select * from games  where idGames = ?", [
+      idGames,
     ]);
   }
 
   const findAll =()=> {
-    return connection.query("select * from  MaListe");
+    return connection.query("select * from  games_has_maliste");
   }
 
-   const del =(idMaListe)=> {
-    return connection.query("delete from MaListe where idMaListe = ?", [
-      idMaListe,
+   const del =(idGames)=> {
+    return connection.query("delete from games where idGames = ?", [
+      idGames,
     ]);
   } 
 
@@ -26,8 +26,8 @@ const connection = require('../config/db');
 
 
   const create = async (
-    
-    NmListe,
+    Games_idGames,
+    MaListe_idMaListe
 
   ) => {
     try {
@@ -36,10 +36,13 @@ const connection = require('../config/db');
         process.env.SALT
       ); */
       const [result] = await connection.query(
-        "INSERT INTO MaListe ( NmListe) VALUES (?)",
+        "INSERT INTO games_has_maliste (Games_idGames, MaListe_idMaListe) VALUES (( SELECT idGames FROM games WHERE idGames=? ),(SELECT idMaListe FROM MaListe WHERE idMaListe=?))",
+
         [
-            
-          NmListe,
+            Games_idGames,
+            MaListe_idMaListe,
+        
+        
          
         ]
       );
@@ -54,11 +57,12 @@ const connection = require('../config/db');
     }
   };
 
-  const editor = (NmListe,idMaListe) => {
-    return connection.query("UPDATE maListe SET NmListe=? WHERE idMaListe=?", [
-      
-      NmListe,
-      idMaListe,
+  const editor = (Games_idGames, MaListe_idMaListe,idMaListe) => {
+    return connection.query("UPDATE games_has_maliste SET Games_idGames=?, MaListe_idMaListe=? WHERE idMaListe=?", [
+    Games_idGames,
+    MaListe_idMaListe,
+    
+    idMaListe,
     ]);
   };
 

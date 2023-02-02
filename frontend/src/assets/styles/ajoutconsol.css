@@ -1,0 +1,19 @@
+.pageAjout{
+
+background-image: url("../persos.png");
+
+}
+.formIns{
+
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:100px;
+    text-shadow: 8px 4px 2px(black);
+}
+.BtnIns{
+
+margin-top:30px;
+
+}

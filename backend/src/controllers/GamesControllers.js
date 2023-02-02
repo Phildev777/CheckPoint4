@@ -45,35 +45,16 @@ const read= async (req, res)=> {
 
 }
 
-/* const edit = (req, res) => {
-  const item = req.body;
-
-  // TODO validations (length, format...)
-
-  item.id = parseInt(req.params.id, 10);
-
-  models.item
-    .update(item)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-}; */
 
 
 const edit = async (req, res) => {
 
+
   try {
 
-      const { Name, Consoles_idConsoles, Years_idYears } = req.body;
-      const [ result ] = await GamesModel.editor(Name, Consoles_idConsoles, Years_idYears);
+      const { Name,imgG, Consoles_idConsoles, Years_idYears,idGames  } = req.body;
+
+      const [ result ] = await GamesModel.editor(Name, imgG,Consoles_idConsoles, Years_idYears,idGames);
       if (result.affectedRows > 0) {
           return res.status(201).send(result);
 

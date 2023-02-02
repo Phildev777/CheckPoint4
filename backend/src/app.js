@@ -5,6 +5,7 @@ const cors = require("cors");
 const router = require("./routes/Gameroute");
 const consoleRouter = require("./routes/ConsoleRoute");
 const MListRouter = require("./routes/MaListeRoute");
+const GListRouter = require("./routes/GameListRoute");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 app.use("/api/games",router);
 app.use("/api/console",consoleRouter);
 app.use("/api/maliste",MListRouter);
+app.use("/api/gameliste",GListRouter);
 
 
 // Redirect all requests to the REACT app
