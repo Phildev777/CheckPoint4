@@ -1,7 +1,6 @@
 ## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+The basic idea of the project is to be able to consult and add the various consoles already released on the market. Then to be able to select games and make a list of games already owned. To go further, we will be able to sort this list in "finished", "tested", "in progress" and "want to play" games.
 
 ## Setup & Use
 
