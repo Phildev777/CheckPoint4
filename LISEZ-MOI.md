@@ -1,6 +1,6 @@
 ## Concept
 
-Ce template est conçu pour servir de base à tous les projets (P2/P3) suivants la stack React-Node-MySQL telle qu'enseignée à la Wild Code School. Il est préconfiguré avec un ensemble d'outils qui aideront les élèves à produire un code correspondant mieux aux standards du monde du travail et plus facile à maintenir, tout en restant simple à utiliser.
+L'idée de base du projet est de pouvoir consulter et ajouter les divers consoles déjà sorties sur le marché. Ensuite de pouvoir selectionner des jeux et d'en faire une liste de jeux déjà possédés. Pour aller plus loin, on pourra par la suite tri cette liste en jeux "finis", "testés", "en cours" et "envie de jouer"
 
 ## Installation & Utilisation
 
